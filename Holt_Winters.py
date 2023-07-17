@@ -9,10 +9,10 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
 # preparing data
-times = pd.read_csv("https://bit.ly/udemy_df", index_col = "Date", parse_dates = True) # index sets specific column as index instead of integers from 0. parse converts dates to hyphen instead of forward slash format
-del times["Easter"] # removing extra columns
+times = pd.read_csv("https://bit.ly/udemy_df", index_col = "Date", parse_dates = True)
+del times["Easter"]
 del times["Christmas"]
-df = times.resample(rule = "MS").sum()  # new table with dates every month by summing all values in each month
+df = times.resample(rule = "MS").sum()
 
 # plotting seasonality and trend data
 seasonal_decompose(df, model = "mul").plot()
